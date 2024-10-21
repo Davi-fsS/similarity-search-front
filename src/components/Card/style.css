@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: #535355;
+    border-radius: .8rem;
+    padding: .8rem;
+    width: 25%;
+    height: 10vh;
+    text-align: left;
+    gap: .3vh;
+}
+
+.title{
+    font-size: 1.1rem;
+    text-align: left;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+}
+
+.text{
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
