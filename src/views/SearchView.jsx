@@ -181,7 +181,7 @@ const SearchView = () => {
                 notices?.length > 0 ? 
                     notices?.map((item) => <Card title={item.title} subtitle={item.subtitle} date={item.date} index={item.notice}/>)
                 :
-                <p className="title-page" style={{fontSize: ".9rem"}}>Sem editais encontrados</p>
+                loading && <p className="title-page" style={{fontSize: ".9rem"}}>Sem editais encontrados</p>
             }
             </div>
         </div>
