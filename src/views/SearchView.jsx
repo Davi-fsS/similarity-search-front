@@ -16,144 +16,41 @@ const SearchView = () => {
         textarea.style.height = "auto";
         textarea.style.height = `${textarea.scrollHeight}px`;
 
-        if(text.length === 0){
+        if (text.length === 0) {
             setCanEnter(false);
         }
-        else{
+        else {
             setCanEnter(true)
         }
     }, [text]);
 
-    const handleRequest = async() => {
+    const handleRequest = async () => {
         setLoading(true);
         setNotices([]);
 
-        setTimeout(() => {
-            setNotices([
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
+        try {
+            const response = await fetch('http://localhost:8080/get-similar-notices', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-                {
-                    title: "FINEP",
-                    subtitle: "Conhecimento Brasil",
-                    date: "2024-09-28",
-                    notice: 689
-                },
-            ]);
+                body: JSON.stringify({
+                    query: text,
+                }),
+            });
 
+            if (!response.ok) {
+                throw new Error('Erro ao buscar dados da API');
+            }
+
+            const data = await response.json();
+            console.log("data:", data)
+            setNotices(data["similar_notices"]);
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+        } finally {
             setLoading(false);
-        }, 1000);
+        }
     };
 
     return (
@@ -169,20 +66,20 @@ const SearchView = () => {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
-                <button className="button" style={text.length ? {opacity: 1} : {opacity: 0.8}} disabled={!canEnter} onClick={handleRequest}>
+                <button className="button" style={text.length ? { opacity: 1 } : { opacity: 0.8 }} disabled={!canEnter} onClick={handleRequest}>
                     <KeyboardArrowRight className="icon" />
                 </button>
             </div>
             <div className="cards">
-            {
-                loading ?
-                    <ReactLoading type="spin" color="#fff" width={"5%"}/>
-                :
-                notices?.length > 0 ? 
-                    notices?.map((item) => <Card title={item.title} subtitle={item.subtitle} date={item.date} index={item.notice}/>)
-                :
-                loading && <p className="title-page" style={{fontSize: ".9rem"}}>Sem editais encontrados</p>
-            }
+                {
+                    loading ?
+                        <ReactLoading type="spin" color="#fff" width={"5%"} />
+                        :
+                        notices?.length > 0 ?
+                            notices?.map((item) => <Card title={item.notice} distance={item.distance} link={item.document} index={item.notice} />)
+                            :
+                            loading && <p className="title-page" style={{ fontSize: ".9rem" }}>Sem editais encontrados</p>
+                }
             </div>
         </div>
     );
