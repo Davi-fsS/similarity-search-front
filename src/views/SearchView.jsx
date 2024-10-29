@@ -48,11 +48,14 @@ const SearchView = () => {
 
             const editals = data["similar_notices"];
 
-            const editalsFormmated = [];
+            let editalsFormmated = [];
 
             editals.forEach(item => {
                 editalList.forEach(edital => {
-                    if(edital.edital_number === item.notice){
+                    console.log(edital)
+                    if (edital.edital_number == item.notice) {
+                        console.log(edital.edital_number)
+                        console.log(item.notice)
                         editalsFormmated.push({
                             notice: item.notice,
                             title: edital.edital_name,
