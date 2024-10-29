@@ -67,7 +67,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     height: auto;
-    max-height: 45vh;
+    max-height: 60vh;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Para Internet Explorer e Edge */
     scrollbar-width: none;     /* Para Firefox */
