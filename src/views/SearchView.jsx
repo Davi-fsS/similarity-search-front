@@ -3,6 +3,7 @@ import './style.css';
 import { KeyboardArrowRight } from "@mui/icons-material";
 import Card from "../components/Card/Card";
 import ReactLoading from 'react-loading';
+import { editalList } from "../data/editalList";
 
 const SearchView = () => {
     const [text, setText] = useState("");
@@ -44,8 +45,25 @@ const SearchView = () => {
             }
 
             const data = await response.json();
-            console.log("data:", data)
-            setNotices(data["similar_notices"]);
+
+            const editals = data["similar_notices"];
+
+            const editalsFormmated = [];
+
+            editals.forEach(item => {
+                editalList.forEach(edital => {
+                    if(edital.edital_number === item.notice){
+                        editalsFormmated.push({
+                            notice: item.notice,
+                            title: edital.edital_name,
+                            code: item.notice,
+                            link: item.document
+                        });
+                    }
+                })
+            });
+
+            setNotices(editalsFormmated);
         } catch (error) {
             console.error('Erro na requisição:', error);
         } finally {
@@ -76,7 +94,7 @@ const SearchView = () => {
                         <ReactLoading type="spin" color="#fff" width={"5%"} />
                         :
                         notices?.length > 0 ?
-                            notices?.map((item) => <Card title={item.notice} distance={item.distance} link={item.document} index={item.notice} />)
+                            notices?.map((item) => <Card code={item.code} title={item.title} distance={item.distance} link={item.document} index={item.notice} />)
                             :
                             loading && <p className="title-page" style={{ fontSize: ".9rem" }}>Sem editais encontrados</p>
                 }
