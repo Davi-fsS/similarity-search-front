@@ -35,7 +35,121 @@ const SearchView = () => {
                     subtitle: "Conhecimento Brasil",
                     date: "2024-09-28",
                     notice: 689
-                }
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
+                {
+                    title: "FINEP",
+                    subtitle: "Conhecimento Brasil",
+                    date: "2024-09-28",
+                    notice: 689
+                },
             ]);
 
             setLoading(false);
@@ -44,7 +158,7 @@ const SearchView = () => {
 
     return (
         <div className="search">
-            <p className="title">
+            <p className="title-page">
                 Conte-me como é o seu projeto, qual seu objetivo, desafios tecnológicos e características
             </p>
             <div className="input-button-container">
@@ -62,12 +176,12 @@ const SearchView = () => {
             <div className="cards">
             {
                 loading ?
-                    <ReactLoading type="bubbles" color="#fff" width={"10%"}/>
+                    <ReactLoading type="spin" color="#fff" width={"5%"}/>
                 :
                 notices?.length > 0 ? 
                     notices?.map((item) => <Card title={item.title} subtitle={item.subtitle} date={item.date} index={item.notice}/>)
                 :
-                null
+                <p className="title-page" style={{fontSize: ".9rem"}}>Sem editais encontrados</p>
             }
             </div>
         </div>

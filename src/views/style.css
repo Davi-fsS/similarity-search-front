@@ -6,7 +6,7 @@
     gap: 3vh;
 }
 
-.title {
+.title-page {
     margin: 0;
     font-size: 1.3rem;
     color: #fff;
@@ -30,6 +30,7 @@
     resize: none;
     outline: none;
     overflow: hidden;
+    font-family: sans-serif
 }
 
 .button {
@@ -65,7 +66,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 45vh;
+    height: auto;
+    max-height: 45vh;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Para Internet Explorer e Edge */
     scrollbar-width: none;     /* Para Firefox */
