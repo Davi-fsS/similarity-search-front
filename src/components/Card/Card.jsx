@@ -6,7 +6,7 @@ const Card = ({ title, distance, link, index }) => {
     console.log("link:", link)
 
     return <div className='container' key={index}>
-        <a href={{ link }} target='_blank' rel='noopener noreferrer'>
+        <a href={`${link}`} target='_blank' rel='noopener noreferrer'>
             <h1 className='title'>{title}</h1>
             <p className='text'>{distance}</p>
             {/* <div className='dateContainer'>
