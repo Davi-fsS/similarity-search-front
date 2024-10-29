@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/similarity-search-front/static/css/main.b34b41ce.css",
+    "main.js": "/similarity-search-front/static/js/main.b71b80c3.js",
+    "static/js/453.dce1ffb3.chunk.js": "/similarity-search-front/static/js/453.dce1ffb3.chunk.js",
+    "index.html": "/similarity-search-front/index.html",
+    "main.b34b41ce.css.map": "/similarity-search-front/static/css/main.b34b41ce.css.map",
+    "main.b71b80c3.js.map": "/similarity-search-front/static/js/main.b71b80c3.js.map",
+    "453.dce1ffb3.chunk.js.map": "/similarity-search-front/static/js/453.dce1ffb3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b34b41ce.css",
+    "static/js/main.b71b80c3.js"
+  ]
+}
